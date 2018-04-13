@@ -34,6 +34,7 @@ export default class PhotoView extends Component {
         onTap: PropTypes.func,
         onViewTap: PropTypes.func,
         onScale: PropTypes.func,
+        bgColor: PropTypes.string,
         ...ViewPropTypes
     };
 

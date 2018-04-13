@@ -1,5 +1,6 @@
 #import "RNPhotoViewManager.h"
 #import "RNPhotoView.h"
+#import <UIKit/UIKit.h>
 
 @implementation RNPhotoViewManager
 
@@ -17,6 +18,8 @@ RCT_REMAP_VIEW_PROPERTY(minimumZoomScale, minZoomScale, CGFloat)
 
 RCT_EXPORT_VIEW_PROPERTY(showsHorizontalScrollIndicator, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(showsVerticalScrollIndicator, BOOL)
+
+RCT_EXPORT_VIEW_PROPERTY(bgColor, UIColor)
 
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerError, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerScale, RCTDirectEventBlock)
