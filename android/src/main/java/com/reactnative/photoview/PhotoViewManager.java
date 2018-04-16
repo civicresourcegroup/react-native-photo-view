@@ -68,6 +68,11 @@ public class PhotoViewManager extends SimpleViewManager<PhotoView> {
         view.setMaximumScale(maximumZoomScale);
     }
 
+    @ReactProp(name = "bgColor", customType = "Color")
+    public void setBgColor(PhotoView view, @Nullable Integer bgColor) {
+        view.setBgColor(bgColor);
+    }
+
     @ReactProp(name = "scale")
     public void setScale(PhotoView view, float scale) {
         view.setScale(scale, true);

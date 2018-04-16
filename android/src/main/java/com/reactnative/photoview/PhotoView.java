@@ -1,6 +1,7 @@
 package com.reactnative.photoview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -25,6 +26,8 @@ import com.facebook.react.common.SystemClock;
 import com.facebook.react.modules.fresco.ReactNetworkImageRequest;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.uimanager.events.EventDispatcher;
+import com.facebook.drawee.drawable.RoundedColorDrawable;
+
 import me.relex.photodraweeview.OnPhotoTapListener;
 import me.relex.photodraweeview.OnScaleChangeListener;
 import me.relex.photodraweeview.OnViewTapListener;
@@ -51,6 +54,7 @@ public class PhotoView extends PhotoDraweeView {
     private PipelineDraweeControllerBuilder mDraweeControllerBuilder;
     private int mFadeDurationMs = -1;
     private ControllerListener mControllerListener;
+    private RoundedColorDrawable bgColor = new RoundedColorDrawable(Color.BLACK);
 
     public PhotoView(Context context) {
         super(context);
@@ -94,6 +98,10 @@ public class PhotoView extends PhotoDraweeView {
     public void setFadeDuration(int durationMs) {
         mFadeDurationMs = durationMs;
         // no worth marking as dirty if it already rendered..
+    }
+
+    public void setBgColor(int color) {
+        bgColor.setColor(color);
     }
 
     public void setShouldNotifyLoadEvents(boolean shouldNotify) {
@@ -149,6 +157,7 @@ public class PhotoView extends PhotoDraweeView {
         if (mLoadingImageDrawable != null) {
             hierarchy.setPlaceholderImage(mLoadingImageDrawable, ScalingUtils.ScaleType.CENTER);
         }
+        hierarchy.setBackgroundImage(bgColor);
         hierarchy.setFadeDuration(
                 mFadeDurationMs >= 0
                         ? mFadeDurationMs
